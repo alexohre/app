@@ -23,50 +23,21 @@
       </div>
       <!-- Nested row for non-featured blog posts-->
       <div class="row">
-        <div class="col-lg-6">
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://images.unsplash.com/photo-1641931580980-e8899ab20077?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80" alt="..." /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2021</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
+      
+        <% @articles.each do |article| %>
+          <div class="col-lg-6">
+            <!-- Blog post-->
+            <div class="card mb-4 ">
+              <%= link_to article do %><%= image_tag(article.image, class: "card-img-top img-fluid" ) if article.image.attached? %><% end %>
+              <div class="card-body ">
+                <div class="small text-muted"> <%= article.created_at.strftime("%B %d,  %Y") %></div>
+                <h2 class="card-title h4"><%= article.title %></h2>
+                <p class="card-text"><%= article.content.to_plain_text.truncate(100) %></p>
+                <%= link_to "Read more →", article, class: "btn btn-primary" %>
+              </div>
             </div>
           </div>
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://images.unsplash.com/photo-1641946732576-94e61721d705?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxlZGl0b3JpYWwtZmVlZHw0N3x8fGVufDB8fHx8&auto=format&fit=crop&w=500&q=60" alt="..." /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2021</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://images.unsplash.com/photo-1556388158-158ea5ccacbd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8N3x8ZmxpZ2h0fGVufDB8fDB8fA%3D%3D&auto=format&fit=crop&w=500&q=60" alt="..." /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2021</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla.</p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-          </div>
-          <!-- Blog post-->
-          <div class="card mb-4">
-            <a href="#!"><img class="card-img-top" src="https://images.unsplash.com/reserve/Af0sF2OS5S5gatqrKzVP_Silhoutte.jpg?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8NHx8bG92ZXxlbnwwfHwwfHw%3D&auto=format&fit=crop&w=500&q=60" alt="..." /></a>
-            <div class="card-body">
-              <div class="small text-muted">January 1, 2021</div>
-              <h2 class="card-title h4">Post Title</h2>
-              <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis aliquid atque, nulla? Quos cum ex quis soluta, a laboriosam.</p>
-              <a class="btn btn-primary" href="#!">Read more →</a>
-            </div>
-          </div>
-        </div>
+        <% end %>
       </div>
       <!-- Pagination-->
       <nav aria-label="Pagination">
@@ -85,55 +56,10 @@
     <!-- Side widgets-->
     <div class="col-lg-4">
       <!-- Search widget-->
-      <div class="card mb-4">
-        <div class="card-header">Search</div>
-        <div class="card-body">
-          <div class="input-group">
-            <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-            <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-          </div>
-        </div>
-      </div>
-      <!-- Categories widget-->
-      <div class="card mb-4">
-        <div class="card-header">Categories</div>
-        <div class="card-body">
-          <div class="row">
-            <div class="col-sm-6">
-              <ul class="list-unstyled mb-0">
-                <li><a href="#!">Web Design</a></li>
-                <li><a href="#!">HTML</a></li>
-                <li><a href="#!">Freebies</a></li>
-              </ul>
-            </div>
-            <div class="col-sm-6">
-              <ul class="list-unstyled mb-0">
-                <li><a href="#!">JavaScript</a></li>
-                <li><a href="#!">CSS</a></li>
-                <li><a href="#!">Tutorials</a></li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- Side widget-->
-      <div class="card mb-4">
-        <div class="card-header">Side Widget</div>
-        <div class="card-body">You can put anything you want inside of these side widgets. They are easy to use, and feature the Bootstrap 5 card component!</div>
-      </div>
+      <%= render 'shared/sidebar' %>
     </div>
   </div>
 </div>
-
 <h1>Articles</h1>
-
-<div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
-</div>
 
 <%= link_to "New article", new_article_path %>

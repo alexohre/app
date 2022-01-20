@@ -12,5 +12,12 @@
 #
 
 class Article < ApplicationRecord
-  enum status: {draft: 0, publish: 1, archive: 2}
+  has_many :comments, as: :commentable
+  
+  validates :title, presence: true, length: {minimum: 6}
+  has_rich_text :content
+  has_one_attached :image
+  
+  
+  enum status: {draft: 0, publish: 1}
 end
