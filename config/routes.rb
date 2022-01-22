@@ -1,5 +1,10 @@
 Rails.application.routes.draw do
-  resources :articles
+  resources :articles do
+    resources :comments
+  end
+  resources :comments do
+    resources :comments
+  end
   devise_for :users
   devise_scope :user do
     get 'sign_up', to: 'devise/registrations#new'

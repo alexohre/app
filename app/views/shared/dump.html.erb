@@ -1,40 +1,37 @@
-
-<div class="container">
-    <header class="d-flex flex-wrap align-items-center justify-content-center justify-content-md-between py-3 mb-4 border-bottom">
-      <a href="/" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-dark text-decoration-none">
-        <svg class="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
-      </a>
-
-  <% if current_user %>
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Dashboard</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Contact Us</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <%= link_to "Log out", destroy_user_session_path, 'data-turbo-method': :delete, class: "btn btn-danger" %>
+<section class="mb-5">
+  <div class="card bg-light">
+    <div class="card-body">
+      <!-- Comment form-->
+      <form class="mb-4">
+        <textarea class="form-control" rows="3" placeholder="Join the discussion and leave a comment!"></textarea>
+      </form>
+      <!-- Comment with nested comments-->
+      <div class="d-flex mb-4">
+        <!-- Parent comment-->
+        <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+        <div class="ms-3">
+          <div class="fw-bold">Commenter Name</div>
+          <%= comment.content %>.
+          <!-- Child comment 
+                <div class="d-flex mt-4">
+                  <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+                  <div class="ms-3">
+                    <div class="fw-bold">Commenter Name</div>
+                    And under those conditions, you cannot establish a capital-market evaluation of that enterprise. You can't get investors.
+                  </div>
+                </div>
+                1-->
+        </div>
       </div>
-      <% else %>
-
-      <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-        <li><a href="#" class="nav-link px-2 link-secondary">Home</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Features</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">Pricing</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">FAQs</a></li>
-        <li><a href="#" class="nav-link px-2 link-dark">About</a></li>
-      </ul>
-
-      <div class="col-md-3 text-end">
-        <%= link_to "Login", new_user_session_path, class: "btn btn-outline-primary me-2" %>
-        <%= link_to "Sign Up", new_user_registration_path, class: "btn btn-primary" %>
-        <%# <button type="button" class="btn btn-outline-primary me-2">Login</button> %>
-        <%# <button type="button" class="btn btn-primary">Sign-up</button> %>
-      </div>
-    </header>
-  <% end %>
+      <!-- Single comment
+            <div class="d-flex">
+              <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/50x50/ced4da/6c757d.jpg" alt="..." /></div>
+              <div class="ms-3">
+                <div class="fw-bold">Commenter Name</div>
+                When I look at the universe and all the ways the universe wants to kill us, I find it hard to reconcile that with statements of beneficence.
+              </div>
+            </div>
+            -->
+    </div>
   </div>
-
-
+</section>
