@@ -21,7 +21,7 @@ class User < ApplicationRecord
          :timeoutable
 
   has_many :articles, dependent: :destroy
-  has_many :comments
+  has_many :comments, as: :commentable, dependent: :destroy
 
 
 
