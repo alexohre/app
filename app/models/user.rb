@@ -20,7 +20,12 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable, 
          :timeoutable
 
+  has_many :articles, dependent: :destroy
+  has_many :comments
 
+
+
+  # user roles in the application
   enum role: [:user, :moderator, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role

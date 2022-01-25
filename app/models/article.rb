@@ -12,8 +12,9 @@
 #
 
 class Article < ApplicationRecord
-  has_many :comments, as: :commentable
-  
+  has_many :comments, as: :commentable, dependent: :destroy
+  belongs_to :user
+
   validates :title, presence: true, length: {minimum: 6}
   has_rich_text :content
   has_one_attached :image
