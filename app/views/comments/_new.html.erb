@@ -1,6 +1,6 @@
 
       <%= form_with model: [@article, Comment.new ] do |f| %>
         <%= f.text_area :content, class: "form-control mb-2", rows: "3", placeholder: "Join the discussion and leave a comment!" %>
-        <%= f.submit class: "btn btn-primary mb-3" %>
+        <%= f.submit class: "btn btn-primary mb-3" %> as <%= current_user.email %>
       <% end %>
 

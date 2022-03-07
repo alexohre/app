@@ -7,12 +7,13 @@
  
  
  <!-- Comment with nested comments-->
-<div class="d-flex mb-4">
+<div class="d-flex">
   <!-- Parent comment-->
-  <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/40x40/ced4da/6c757d.jpg" alt="..." /></div>
+  <div class="flex-shrink-0"><img class="rounded-circle" src="https://dummyimage.com/40x40/ced4da/6c757d.jpg" alt="pic" /></div>
   <div id="<%= dom_id(comment) %>" class="ms-2">
     <div class="fw-bold">Commenter Name</div>
-    <%= comment.content %> <button onclick="openBox()" class="btn-sm btn btn-primary postBtn">Reply</button>
+    <%= comment.content %> <br>
+    <button onclick="openBox()" class="btn-sm btn btn-primary postBtn">Reply</button>
     
     <div class="reply_com">
       <%= form_for [comment, Comment.new] do |f| %>
@@ -32,5 +33,4 @@
   function openBox() {
         document.querySelector('.reply_com').style.display = 'block';
       }
-
 </script>

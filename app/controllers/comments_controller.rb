@@ -6,8 +6,14 @@ class CommentsController < ApplicationController
     end
 
     def create
-      @commentable.comments.build(comment_params)
-      @commentable.save
+      @comment = @commentable.comments.new comment_params
+      @comment.user = current_user
+      
+      if @comment.save
+        redirect_to article_path(@article), notice: "comment created successfully"
+      else
+        redirect_to root_path, alert: "error in comment"
+      end
     end
 
     private

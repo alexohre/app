@@ -8,7 +8,7 @@
           <!-- Post title-->
           <h1 class="fw-bolder mb-1"><%= @article.title %></h1>
           <!-- Post meta content-->
-          <div class="text-muted fst-italic mb-2">Posted on  <%= @article.created_at.strftime("%B %d, %Y %H:%M") %> by Start Bootstrap</div>
+          <div class="text-muted fst-italic mb-2">Posted on  <%= @article.created_at.strftime("%B %d, %Y %H:%M") %> by <b><%= @article.user.email %></b></div>
           <!-- Post categories-->
           <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
         </header>
@@ -24,10 +24,26 @@
         <div class="card bg-light">
           <div class="card-body">
             <%#= render 'comments/comment', collection: @article.comments  %>
-            <%= render 'comments/new' %>
-            <%= render @article.comments.order(id: :desc) %>
+            <% if current_user %>
+              <%= render 'comments/new' %>
+            <% else %>
+              <div class="bg-light text-center">
+                <div class=" mx-auto">
+                  <p class="fs-5">Please Sign in or create account to join the discussion!</p>
+                  <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+                    <a href="/login" class="btn btn-outline-primary px-4 me-sm-2 ">Sign In</a>
+                    <a  href="/sign_up" class="btn btn-primary px-4">Sign Up</a>
+                  </div>
+                </div>
+              </div>
+            <% end %>
           </div>
         </div>
+        <% if !@article.comments.empty? %>
+          <div class="card ps-3 pt-3 pe-3 mt-4 bg-light">
+            <%= render @article.comments.order(id: :desc) %>
+          </div>
+        <% end %>
       </section>
     </div>
     <!-- Side widgets-->
