@@ -20,6 +20,11 @@
   </div>
 
   <div class="form-floating mb-3">
+    <%= f.text_field :username, autocomplete: "email", id: "floatingInput", placeholder: "username", class: "form-control", required: "true" %>
+    <%= f.label :username, for: "floatingInput" %>
+  </div>
+
+  <div class="form-floating mb-3">
     <%= f.password_field :password, autocomplete: "new-password", class: "form-control", id: "floatingPassword", placeholder: "Password" %>
     <p>6 character minimum</p>
     <%= f.label :password, for: "floatingPassword" %>

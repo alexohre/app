@@ -8,7 +8,7 @@
           <!-- Post title-->
           <h1 class="fw-bolder mb-1"><%= @article.title %></h1>
           <!-- Post meta content-->
-          <div class="text-muted fst-italic mb-2">Posted on  <%= @article.created_at.strftime("%B %d, %Y %H:%M") %> by <b><%= @article.user.email %></b></div>
+          <div class="text-muted fst-italic mb-2">Posted on  <i class="fa-thin fa-clock"></i> <%= @article.created_at.strftime("%B %d, %Y %H:%M") %> <i class="fa-thin fa-circle-user ms-2"></i> <b><%= @article.user.email %></b></div>
           <!-- Post categories-->
           <a class="badge bg-secondary text-decoration-none link-light" href="#!">Freebies</a>
         </header>

@@ -1,0 +1,7 @@
+<h1>Users#show</h1>
+<p>Find me in app/views/users/show.html.erb</p>
+<% if @user.full_name.present? %>
+<h1><%=  @user.full_name %></h1>
+<% else %>
+<h1><%= @user.email %></h1>
+<% end %>

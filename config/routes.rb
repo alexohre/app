@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'users/index'
+  get 'users/show'
   resources :articles do
     resources :comments
   end
@@ -15,8 +17,11 @@ Rails.application.routes.draw do
     delete 'sign_out', to: 'devise/sessions#destroy'
     get 'account-settings', to: 'devise/registrations#edit'
     get 'forget-pass', to: 'devise/passwords#new'
+    
   end
   root 'articles#index'
+  get 'user/:id', to: 'users#show'
+  get 'users', to: 'users#index'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
