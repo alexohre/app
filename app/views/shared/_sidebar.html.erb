@@ -4,7 +4,7 @@
 <%= search_form_for(@query, url: search_path, method: :get) do |f| %>
   <div class="card-body">
     <div class="input-group">
-  <%= f.search_field :title_or_content_i_cont_any, class: "form-control", placeholder: "Enter search..." %>
+  <%= f.search_field :title_or_content_body_i_cont_any, class: "form-control", placeholder: "Enter search..." %>
   <%= f.submit "search", class: "btn btn-primary", id: "button-search" %>
     </div>
   </div>
