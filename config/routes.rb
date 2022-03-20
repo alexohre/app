@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
-  get 'users/index'
-  get 'users/show'
+
+  get 'search', to: 'search#index'
+
   resources :articles do
     resources :comments
   end
+
   resources :comments do
     resources :comments
   end
+
   devise_for :users
   devise_scope :user do
     get 'sign_up', to: 'devise/registrations#new'

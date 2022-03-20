@@ -1,0 +1,50 @@
+<div class="container">
+  <% if @articles != 0 %>
+    <h1 class="text-center mb-3"><%= pluralize(@articles.count, "Result") %></h1>
+  <% end %>
+  <div class="row">
+    <!-- Blog entries-->
+    <div class="col-lg-8">
+      <!-- Featured blog post-->
+      <!-- Nested row for non-featured blog posts-->
+      <div class="row">
+        <% @articles.each do |article| %>
+          <% if article == 0 %>
+            <img src="/not_found.jpg" alt="not found image">
+          <% else %>
+            <div class="col-lg-6">
+              <!-- Blog post-->
+              <div class="card mb-4 ">
+                <%= link_to article do %><%= image_tag(article.image, class: "card-img-top img-fluid" ) if article.image.attached? %><% end %>
+                <div class="card-body ">
+                  <div class="small text-muted"> <%= article.created_at.strftime("%B %d,  %Y") %></div>
+                  <h2 class="card-title h4"><%= article.title %></h2>
+                  <p class="card-text"><%= article.content.to_plain_text.truncate(100) %></p>
+                  <%= link_to "Read more →", article, class: "btn btn-primary" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+      <!-- Pagination-->
+      <nav aria-label="Pagination">
+        <hr class="my-0" />
+        <ul class="pagination justify-content-center my-4">
+          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
+          <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
+          <li class="page-item"><a class="page-link" href="#!">2</a></li>
+          <li class="page-item"><a class="page-link" href="#!">3</a></li>
+          <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
+          <li class="page-item"><a class="page-link" href="#!">15</a></li>
+          <li class="page-item"><a class="page-link" href="#!">Older</a></li>
+        </ul>
+      </nav>
+    </div>
+    <!-- Side widgets-->
+    <div class="col-lg-4">
+      <!-- Search widget-->
+      <%= render 'shared/sidebar' %>
+    </div>
+  </div>
+</div>

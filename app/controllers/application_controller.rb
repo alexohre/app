@@ -1,6 +1,11 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :store_user_location!, if: :storable_location?
+  before_action :set_query
+
+  def set_query
+    @query = Article.ransack(params[:q])
+  end
 
   # def checknames
   #   if current_user.first_name.blank? || current_user.last_name.blank?
