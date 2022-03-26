@@ -28,12 +28,13 @@ class User < ApplicationRecord
   validates :username, presence: true, uniqueness: { case_sensitive: false }
 
   # user roles in the application
-  enum role: [:user, :moderator, :admin]
+  enum role: [:user, :editor, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role
     self.role ||= :user
   end
 
+  #setting default avatar for new users
   after_commit :add_default_avatar, on: %i[ create update ]
 
   def avatar_thumbnail
@@ -44,11 +45,13 @@ class User < ApplicationRecord
     end
   end
   
+  # name concatination, adding first and last name
   def full_name
     first_name + " " + last_name
   end
   
 
+  #private methods for adding default avatar
   private
   def add_default_avatar
     unless avatar.attached?

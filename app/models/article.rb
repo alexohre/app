@@ -23,4 +23,7 @@ class Article < ApplicationRecord
   
   
   enum status: {draft: 0, publish: 1}
+
+  scope :featured_article, -> { where(:featured => true)}
+  # Ex:- scope :active, -> {where(:active => true)}
 end

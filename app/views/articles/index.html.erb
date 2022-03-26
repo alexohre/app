@@ -15,7 +15,6 @@
     <div class="col-lg-8">
       <!-- Featured blog post-->
       <% @article.each do |article| %>
-        <% if article.featured? %>
           <div class="card mb-4">
             <%= link_to article do %><%= image_tag(article.image, class: "card-img-top img-fluid" ) if article.image.attached? %><% end %>
             <div class="card-body">
@@ -25,7 +24,6 @@
               <%= link_to "Read more →", article, class: "btn btn-primary" %>
             </div>
           </div>
-        <% end %>
       <% end %>
       <!-- Nested row for non-featured blog posts-->
       <div class="row">

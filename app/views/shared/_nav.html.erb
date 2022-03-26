@@ -5,7 +5,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <% if current_user %>
         <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-          <% if current_user.admin? || current_user.moderator? %>
+          <% if current_user.admin? || current_user.editor? %>
             <li class="nav-item"><a class="nav-link" href="#">Dashboard</a></li>
           <% end %>
           <li class="nav-item"><a class="nav-link <%= 'active' if request.path == articles_path %> "  href="/articles">Articles</a></li>
@@ -32,15 +32,15 @@
               Hi, <%= current_user.username %>   <%= image_tag(current_user.avatar, class: "rounded-circle", width: 30, height: 30) if current_user.avatar.attached? %> </a>
             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <li><a class="dropdown-item" href="#">[ <%= current_user.role %> ]</a></li>
-              <% if current_user.admin? || current_user.moderator? %>
-                <li><a class="dropdown-item" href="#"><i class="bi bi-speedometer2"></i> Dashboard</a></li>
+              <% if current_user.admin? || current_user.editor? %>
+                <li><a class="dropdown-item" href="#"><i class="bi bi-speedometer2 me-1"></i> Dashboard</a></li>
               <% end %>
-              <li><a class="dropdown-item" href="#"><i class="bi bi-heart"></i>  Favourites</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fa-thin fa-bell"></i>  Notifications</a></li>
-              <li><a class="dropdown-item" href="#"><i class="fa-thin fa-id-badge"></i>  Profile</a></li>
-              <li><a class="dropdown-item" href="/account-settings"><i class="fa-thin fa-screwdriver-wrench"></i> Settings</a></li>
+              <li><a class="dropdown-item" href="#"><i class="bi bi-heart me-1"></i>  Favourites</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-thin fa-bell me-1"></i>  Notifications</a></li>
+              <li><a class="dropdown-item" href="#"><i class="fa-thin fa-id-badge me-1"></i> My Profile</a></li>
+              <li><a class="dropdown-item" href="/account-settings"><i class="fa-thin fa-screwdriver-wrench me-1"></i> Settings</a></li>
               <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item text-danger" href="/sign_out"><i class="fa-thin fa-arrow-right-from-bracket"></i> Sign-out</a></li>
+              <li><a class="dropdown-item" href="/sign_out"><i class="fa-thin fa-arrow-right-from-bracket me-1"></i> Sign-out</a></li>
             </ul>
           </li>
         </ul>
