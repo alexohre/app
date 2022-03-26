@@ -79,3 +79,5 @@ end
 gem "devise", "~> 4.8"
 
 gem "ransack", "~> 2.6"
+
+gem "pagy", "~> 5.10"

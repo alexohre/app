@@ -14,7 +14,7 @@
     <!-- Blog entries-->
     <div class="col-lg-8">
       <!-- Featured blog post-->
-      <% @article.each do |article| %>
+      <% @featured.each do |article| %>
           <div class="card mb-4">
             <%= link_to article do %><%= image_tag(article.image, class: "card-img-top img-fluid" ) if article.image.attached? %><% end %>
             <div class="card-body">
@@ -46,14 +46,8 @@
       <nav aria-label="Pagination">
         <hr class="my-0" />
         <ul class="pagination justify-content-center my-4">
-          <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-disabled="true">Newer</a></li>
-          <li class="page-item active" aria-current="page"><a class="page-link" href="#!">1</a></li>
-          <li class="page-item"><a class="page-link" href="#!">2</a></li>
-          <li class="page-item"><a class="page-link" href="#!">3</a></li>
-          <li class="page-item disabled"><a class="page-link" href="#!">...</a></li>
-          <li class="page-item"><a class="page-link" href="#!">15</a></li>
-          <li class="page-item"><a class="page-link" href="#!">Older</a></li>
-        </ul>
+        <%== pagy_bootstrap_nav(@pagy) %>
+          </ul>
       </nav>
     </div>
     <!-- Side widgets-->
