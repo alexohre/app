@@ -10,9 +10,14 @@
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
+  <style>
+  .meeet{
+    margin-top: 5.5rem !important;
+  }
+  </style>
   <body>
     <%= render 'shared/nav' %>
-    <div class="container">
+    <div class="container meeet">
       <% if notice %>
         <p style="color: green" class="notice"><%= notice %></p>
       <% end %>
