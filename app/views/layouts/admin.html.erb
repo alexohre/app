@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Triple Cube Dashboard |   </title>
+    <link href="https://cdn.jsdelivr.net/npm/simple-datatables@latest/dist/style.css" rel="stylesheet" />
+    <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <%= stylesheet_link_tag "admin", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "admin", "data-turbo-track": "reload", defer: true %>
+  </head>
+  <style>
+    .meeet{
+      margin-top: 5.5rem !important;
+    }
+  </style>
+  <body class="sb-nav-fixed">
+    <%= render 'shared/admin_nav' %>
+    <%# <div class="container "> %>
+    <% if notice %>
+      <p style="color: green" class="notice"><%= notice %></p>
+    <% end %>
+    <% if alert %>
+      <p style="color: red" class="alert"><%= alert %></p>
+    <% end %>
+    <%= yield %>
+    <%# </div> %>
+    <%# <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> %>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+    <%# <script src="assets/demo/chart-area-demo.js"></script> %>
+    <%# <script src="assets/demo/chart-bar-demo.js"></script> %>
+    <script src="https://cdn.jsdelivr.net/npm/simple-datatables@latest" crossorigin="anonymous"></script>
+    <%# <script src="js/datatables-simple-demo.js"></script> %>
+    <script>
+      $(document).ready(function() {
+        $('#dataTable').DataTable();
+      });
+    </script>
+  </body>
+</html>

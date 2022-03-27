@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   # authenticated :user, -> (User) {user.admin? || user.moderator?} do
+  get 'dashboard/articles', to: 'dashboard#articles'
+  get 'dashboard', to: 'dashboard#index'
     
   # end
   get 'search', to: 'search#index'
