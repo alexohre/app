@@ -8,11 +8,8 @@
           <li class="breadcrumb-item"><a href="/dashboard">Dashboard</a></li>
           <li class="breadcrumb-item active">Articles</li>
         </ol>
-        
-        <button type="button" class="btn btn-outline-primary mb-3 ">New Article</button>
-
+        <button type="button" class="btn btn-outline-primary mb-3 "><i class="bi bi-pencil-square me-1"></i>New Article</button>
         <div class="card mb-4">
-          
           <div class="card-body">
             <div class="dataTable-wrapper dataTable-loading no-footer sortable searchable fixed-columns">
               <div class="dataTable-top">
@@ -23,26 +20,33 @@
                 <table id="datatablesSimple" class="dataTable-table">
                   <thead>
                     <tr>
-                      <th data-sortable="" style="width: 8.7708%;"><a href="#" class="dataTable-sorter">Image</a></th>
+                      <th data-sortable="" style="width: 4.7708%;"><a href="#" class="dataTable-sorter">Image</a></th>
                       <th data-sortable="" style="width: 25.2264%;"><a href="#" class="dataTable-sorter">Article Title</a></th>
                       <th data-sortable="" style="width: 10.3773%;"><a href="#" class="dataTable-sorter">Status</a></th>
+                      <th data-sortable="" style="width: 10.3773%;"><a href="#" class="dataTable-sorter">Author</a></th>
                       <th data-sortable="" style="width: 12.97803%;"><a href="#" class="dataTable-sorter">Created_at</a></th>
                       <th data-sortable="" style="width: 12.97803%;"><a href="#" class="dataTable-sorter">Updated_at</a></th>
-                      <th data-sortable="" style="width: 8.4613%;"><a href="#" class="dataTable-sorter">Comments</a></th>
-                      <th data-sortable="" style="width: 22.4613%;"><a href="#" class="dataTable-sorter">Actions</a></th>
+                      <th data-sortable="" style="width: 3.4613%;"><a href="#" class="dataTable-sorter">Comments</a></th>
+                      <th data-sortable="" style="width: 25.4613%;"><a href="#" class="dataTable-sorter">Actions</a></th>
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>Image</td>
-                      <td>System Architect</td>
-                      <td><span class="badge bg-primary">Publish</span></td>
-                      <td>2011/04/25</td>
-                      <td>2011/04/25</td>
-                      <td>6</td>
-                      <td class="justify-content-between"><span class="badge bg-primary">view</span><span class="badge bg-info">edit</span><span class="badge bg-danger">delete</span></td>
-                    </tr>
-                   
+                    <% @articles.each do |article| %>
+                      <tr>
+                        <td><%= image_tag(article.image, class: "rounded", width: 40, height: 30) if article.image.attached? %></td>
+                        <td><%= article.title %></td>
+                        <td><span class="badge bg-primary"><%= article.status %></span></td>
+                        <td><span><%= article.user.full_name %></span></td>
+                        <td><%= article.created_at.strftime("%B %d, %Y %H:%M") %></td>
+                        <td><%= article.updated_at.strftime("%B %d, %Y %H:%M") %></td>
+                        <td><i class="bi bi-chat-left-dots me-2"></i><%= article.comments.size %></td>
+                        <td class="text-center">
+                          <a href="#!"><span class="badge bg-primary me-2">view</span></a>
+                          <a href="#!"><span class="badge bg-info">edit</span></a>
+                          <a href="#!"><span class="badge bg-danger ms-2">delete</span></a>
+                        </td>
+                      </tr>
+                    <% end %>
                   </tbody>
                 </table>
               </div>
@@ -64,6 +68,6 @@
         </div>
       </div>
     </main>
-   <%= render 'shared/admin_footer' %>
+    <%= render 'shared/admin_footer' %>
   </div>
 </div>
